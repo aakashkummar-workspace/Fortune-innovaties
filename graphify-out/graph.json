@@ -1,0 +1,2124 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "core_academic_flow",
+        "label": "Core Academic Workflow",
+        "nodes": [
+          "course_module",
+          "trainer_module",
+          "student_module",
+          "attendance_module",
+          "timetable_module"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "FEATURES.md"
+      },
+      {
+        "id": "lead_to_student_pipeline",
+        "label": "Lead-to-Student Conversion Pipeline",
+        "nodes": [
+          "lead_module",
+          "admission_module",
+          "student_module",
+          "equal_lead_distribution"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "Phase2_Report.html"
+      },
+      {
+        "id": "system_security_framework",
+        "label": "System Security & Auth Framework",
+        "nodes": [
+          "auth_module",
+          "setup_module",
+          "user_model",
+          "branch_model"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.9,
+        "source_file": "fortune-campus/PRODUCTION_READY.md"
+      },
+      {
+        "id": "core_academic_entities",
+        "label": "Core Academic Entities",
+        "nodes": [
+          "public_students",
+          "public_batches",
+          "public_courses",
+          "public_trainers",
+          "public_attendances"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "inspection_results.txt"
+      },
+      {
+        "id": "crm_entities",
+        "label": "CRM and Admission Flow",
+        "nodes": [
+          "public_leads",
+          "public_admissions",
+          "public_students"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.8,
+        "source_file": "inspection_results.txt"
+      },
+      {
+        "id": "backend_notification_flow",
+        "label": "Notification Automation Flow",
+        "nodes": [
+          "src_modules_notifications_automation_worker",
+          "notification_service"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.9,
+        "source_file": "src/modules/notifications/automation.worker.ts"
+      },
+      {
+        "id": "permission_system_implementation",
+        "label": "Flexible Permission System",
+        "nodes": [
+          "docs_flexible_permissions_spec",
+          "backend_src_lib_permissions",
+          "backend_src_middlewares_permission_middleware",
+          "prisma_user_model",
+          "prisma_capability_grant_log_model"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      },
+      {
+        "id": "user_role_documentation",
+        "label": "User Role Documentation",
+        "nodes": [
+          "user_guides_1_ceo_guide",
+          "user_guides_2_channel_partner_guide",
+          "user_guides_3_trainer_guide"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      },
+      {
+        "id": "fortune_campus_roles",
+        "label": "Fortune Campus User Roles",
+        "nodes": [
+          "ceo_role",
+          "channel_partner_role",
+          "trainer_role",
+          "student_role",
+          "telecaller_role"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "user-guides/index.html"
+      },
+      {
+        "id": "admission_workflow",
+        "label": "Lead to Admission Workflow",
+        "nodes": [
+          "telecaller_role",
+          "channel_partner_role",
+          "trainer_role"
+        ],
+        "relation": "form",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "user-guides/5-Telecaller-Guide.html"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "runAutoMigrations",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/auto-migrate-schema.ts",
+      "source_location": "L264",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_auto_migrate_schema_runautomigrations",
+      "community": 19,
+      "norm_label": "runautomigrations"
+    },
+    {
+      "label": "backfillConductorTrainers",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/backfill-conductor-trainers.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_backfill_conductor_trainers_backfillconductortrainers",
+      "community": 20,
+      "norm_label": "backfillconductortrainers"
+    },
+    {
+      "label": "backfillNotificationLinks",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/backfill-notification-links.ts",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_backfill_notification_links_backfillnotificationlinks",
+      "community": 21,
+      "norm_label": "backfillnotificationlinks"
+    },
+    {
+      "label": "backfillPenaltyAmounts",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/backfill-penalty-amounts.ts",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_backfill_penalty_amounts_backfillpenaltyamounts",
+      "community": 22,
+      "norm_label": "backfillpenaltyamounts"
+    },
+    {
+      "label": "runDailyBreakCompliance",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/daily-break-compliance.ts",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_daily_break_compliance_rundailybreakcompliance",
+      "community": 23,
+      "norm_label": "rundailybreakcompliance"
+    },
+    {
+      "label": "startDailyBreakCompliance",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/daily-break-compliance.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_daily_break_compliance_startdailybreakcompliance",
+      "community": 24,
+      "norm_label": "startdailybreakcompliance"
+    },
+    {
+      "label": "startDailyLeadReassignment",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/daily-lead-reassignment.ts",
+      "source_location": "L145",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_daily_lead_reassignment_startdailyleadreassignment",
+      "community": 25,
+      "norm_label": "startdailyleadreassignment"
+    },
+    {
+      "label": "sendFeeDueReminder",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/fee-due-reminder.ts",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_fee_due_reminder_sendfeeduereminder",
+      "community": 26,
+      "norm_label": "sendfeeduereminder"
+    },
+    {
+      "label": "startFeeDueReminder",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/fee-due-reminder.ts",
+      "source_location": "L200",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_fee_due_reminder_startfeeduereminder",
+      "community": 27,
+      "norm_label": "startfeeduereminder"
+    },
+    {
+      "label": "startMidnightTaskChecker",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/midnight-task-check.ts",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_midnight_task_check_startmidnighttaskchecker",
+      "community": 28,
+      "norm_label": "startmidnighttaskchecker"
+    },
+    {
+      "label": "checkRecurringBillReminders",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/recurring-bill-reminder.ts",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_recurring_bill_reminder_checkrecurringbillreminders",
+      "community": 29,
+      "norm_label": "checkrecurringbillreminders"
+    },
+    {
+      "label": "startRecurringBillReminder",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/jobs/recurring-bill-reminder.ts",
+      "source_location": "L205",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_jobs_recurring_bill_reminder_startrecurringbillreminder",
+      "community": 30,
+      "norm_label": "startrecurringbillreminder"
+    },
+    {
+      "label": "Capability",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/lib/permissions.ts",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_lib_permissions_capability",
+      "community": 31,
+      "norm_label": "capability"
+    },
+    {
+      "label": "CapabilityMeta",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/lib/permissions.ts",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_lib_permissions_capabilitymeta",
+      "community": 32,
+      "norm_label": "capabilitymeta"
+    },
+    {
+      "label": "UserForCapabilityCheck",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/lib/permissions.ts",
+      "source_location": "L145",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_lib_permissions_userforcapabilitycheck",
+      "community": 36,
+      "norm_label": "userforcapabilitycheck"
+    },
+    {
+      "label": "defaultCapabilities",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/lib/permissions.ts",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_lib_permissions_defaultcapabilities",
+      "community": 33,
+      "norm_label": "defaultcapabilities"
+    },
+    {
+      "label": "effectiveCapabilities",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/lib/permissions.ts",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_lib_permissions_effectivecapabilities",
+      "community": 34,
+      "norm_label": "effectivecapabilities"
+    },
+    {
+      "label": "userHas",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/lib/permissions.ts",
+      "source_location": "L177",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_lib_permissions_userhas",
+      "community": 37,
+      "norm_label": "userhas"
+    },
+    {
+      "label": "normalizeExtras",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/lib/permissions.ts",
+      "source_location": "L188",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_lib_permissions_normalizeextras",
+      "community": 35,
+      "norm_label": "normalizeextras"
+    },
+    {
+      "label": "AuthRequest",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/middlewares/auth.middleware.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_middlewares_auth_middleware_authrequest",
+      "community": 38,
+      "norm_label": "authrequest"
+    },
+    {
+      "label": "AccountabilityThresholds",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/accountability/accountability.controller.ts",
+      "source_location": "L94",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_accountability_accountability_controller_accountabilitythresholds",
+      "community": 39,
+      "norm_label": "accountabilitythresholds"
+    },
+    {
+      "label": "AuditLogInput",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/attendance-audit/audit.service.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_attendance_audit_audit_service_auditloginput",
+      "community": 41,
+      "norm_label": "auditloginput"
+    },
+    {
+      "label": "AttendanceAuditService",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/attendance-audit/audit.service.ts",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_attendance_audit_audit_service_attendanceauditservice",
+      "community": 40,
+      "norm_label": "attendanceauditservice"
+    },
+    {
+      "label": "notifyTrainerOfBatchAssignment",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/batches/batch.autoAssign.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_batches_batch_autoassign_notifytrainerofbatchassignment",
+      "community": 44,
+      "norm_label": "notifytrainerofbatchassignment"
+    },
+    {
+      "label": "TrainerPlacement",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/batches/batch.autoAssign.ts",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_batches_batch_autoassign_trainerplacement",
+      "community": 45,
+      "norm_label": "trainerplacement"
+    },
+    {
+      "label": "findOrCreateBatchForEnrollment",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/batches/batch.autoAssign.ts",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_batches_batch_autoassign_findorcreatebatchforenrollment",
+      "community": 43,
+      "norm_label": "findorcreatebatchforenrollment"
+    },
+    {
+      "label": "enrollStudentInBatch",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/batches/batch.autoAssign.ts",
+      "source_location": "L264",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_batches_batch_autoassign_enrollstudentinbatch",
+      "community": 42,
+      "norm_label": "enrollstudentinbatch"
+    },
+    {
+      "label": "reassignTelecallerLeads",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/leads/reassignment.service.ts",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_leads_reassignment_service_reassigntelecallerleads",
+      "community": 47,
+      "norm_label": "reassigntelecallerleads"
+    },
+    {
+      "label": "restoreTelecallerLeads",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/leads/reassignment.service.ts",
+      "source_location": "L196",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_leads_reassignment_service_restoretelecallerleads",
+      "community": 48,
+      "norm_label": "restoretelecallerleads"
+    },
+    {
+      "label": "eachLeaveDay",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/leads/reassignment.service.ts",
+      "source_location": "L243",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_leads_reassignment_service_eachleaveday",
+      "community": 46,
+      "norm_label": "eachleaveday"
+    },
+    {
+      "label": "LmsProgressService",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/lms-progress/lms-progress.service.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_lms_progress_lms_progress_service_lmsprogressservice",
+      "community": 49,
+      "norm_label": "lmsprogressservice"
+    },
+    {
+      "label": "AutomationWorker",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/notifications/automation.worker.ts",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_notifications_automation_worker_automationworker",
+      "community": 50,
+      "norm_label": "automationworker"
+    },
+    {
+      "label": "NotificationService",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/notifications/notification.service.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_notifications_notification_service_notificationservice",
+      "community": 51,
+      "norm_label": "notificationservice"
+    },
+    {
+      "label": "recordCompOffIfApplicable",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/payroll/comp-off.controller.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_payroll_comp_off_controller_recordcompoffifapplicable",
+      "community": 52,
+      "norm_label": "recordcompoffifapplicable"
+    },
+    {
+      "label": "recordLateCheckinPenalty",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/payroll/penalty.controller.ts",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_payroll_penalty_controller_recordlatecheckinpenalty",
+      "community": 54,
+      "norm_label": "recordlatecheckinpenalty"
+    },
+    {
+      "label": "recordEarlyCheckoutPenalty",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/payroll/penalty.controller.ts",
+      "source_location": "L99",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_payroll_penalty_controller_recordearlycheckoutpenalty",
+      "community": 53,
+      "norm_label": "recordearlycheckoutpenalty"
+    },
+    {
+      "label": "runOverdueTaskCheck",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/payroll/penalty.controller.ts",
+      "source_location": "L385",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_payroll_penalty_controller_runoverduetaskcheck",
+      "community": 55,
+      "norm_label": "runoverduetaskcheck"
+    },
+    {
+      "label": "fmtSlotLabel",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/timetable/timetable.controller.ts",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_timetable_timetable_controller_fmtslotlabel",
+      "community": 57,
+      "norm_label": "fmtslotlabel"
+    },
+    {
+      "label": "LeaveOverlay",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/timetable/timetable.controller.ts",
+      "source_location": "L144",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_timetable_timetable_controller_leaveoverlay",
+      "community": 58,
+      "norm_label": "leaveoverlay"
+    },
+    {
+      "label": "detectMissedSlots",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/modules/timetable/timetable.controller.ts",
+      "source_location": "L1009",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_modules_timetable_timetable_controller_detectmissedslots",
+      "community": 56,
+      "norm_label": "detectmissedslots"
+    },
+    {
+      "label": "TemplateKey",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/template.service.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_template_service_templatekey",
+      "community": 64,
+      "norm_label": "templatekey"
+    },
+    {
+      "label": "clearTemplateCache",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/template.service.ts",
+      "source_location": "L207",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_template_service_cleartemplatecache",
+      "community": 59,
+      "norm_label": "cleartemplatecache"
+    },
+    {
+      "label": "getTemplate",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/template.service.ts",
+      "source_location": "L212",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_template_service_gettemplate",
+      "community": 60,
+      "norm_label": "gettemplate"
+    },
+    {
+      "label": "render",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/template.service.ts",
+      "source_location": "L218",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_template_service_render",
+      "community": 61,
+      "norm_label": "render"
+    },
+    {
+      "label": "renderTemplate",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/template.service.ts",
+      "source_location": "L226",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_template_service_rendertemplate",
+      "community": 62,
+      "norm_label": "rendertemplate"
+    },
+    {
+      "label": "saveTemplates",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/template.service.ts",
+      "source_location": "L235",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_template_service_savetemplates",
+      "community": 63,
+      "norm_label": "savetemplates"
+    },
+    {
+      "label": "getLoggedMinutes",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/workingHours.service.ts",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_workinghours_service_getloggedminutes",
+      "community": 67,
+      "norm_label": "getloggedminutes"
+    },
+    {
+      "label": "getRequiredMinutes",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/workingHours.service.ts",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_workinghours_service_getrequiredminutes",
+      "community": 68,
+      "norm_label": "getrequiredminutes"
+    },
+    {
+      "label": "getCheckoutHoursStatus",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/workingHours.service.ts",
+      "source_location": "L133",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_workinghours_service_getcheckouthoursstatus",
+      "community": 66,
+      "norm_label": "getcheckouthoursstatus"
+    },
+    {
+      "label": "fmtMinutes",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/services/workingHours.service.ts",
+      "source_location": "L155",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_services_workinghours_service_fmtminutes",
+      "community": 65,
+      "norm_label": "fmtminutes"
+    },
+    {
+      "label": "haversineDistance",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/utils/geofence.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_utils_geofence_haversinedistance",
+      "community": 69,
+      "norm_label": "haversinedistance"
+    },
+    {
+      "label": "generateSessionCode",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/utils/qr.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_utils_qr_generatesessioncode",
+      "community": 70,
+      "norm_label": "generatesessioncode"
+    },
+    {
+      "label": "ApiResponse",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/backend/src/utils/response.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_backend_src_utils_response_apiresponse",
+      "community": 71,
+      "norm_label": "apiresponse"
+    },
+    {
+      "label": "enforceAppVersion",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/bootstrap/version.ts",
+      "source_location": "L65",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_bootstrap_version_enforceappversion",
+      "community": 72,
+      "norm_label": "enforceappversion"
+    },
+    {
+      "label": "BreakCard",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/components/attendance/BreakCard.tsx",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_components_attendance_breakcard_breakcard",
+      "community": 73,
+      "norm_label": "breakcard"
+    },
+    {
+      "label": "BadgeProps",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/components/ui/badge.tsx",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_components_ui_badge_badgeprops",
+      "community": 74,
+      "norm_label": "badgeprops"
+    },
+    {
+      "label": "ButtonProps",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/components/ui/button.tsx",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_components_ui_button_buttonprops",
+      "community": 75,
+      "norm_label": "buttonprops"
+    },
+    {
+      "label": "CalendarProps",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/components/ui/calendar.tsx",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_components_ui_calendar_calendarprops",
+      "community": 76,
+      "norm_label": "calendarprops"
+    },
+    {
+      "label": "ChartConfig",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/components/ui/chart.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_components_ui_chart_chartconfig",
+      "community": 77,
+      "norm_label": "chartconfig"
+    },
+    {
+      "label": "TextareaProps",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/components/ui/textarea.tsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_components_ui_textarea_textareaprops",
+      "community": 78,
+      "norm_label": "textareaprops"
+    },
+    {
+      "label": "Toaster",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/components/ui/toaster.tsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_components_ui_toaster_toaster",
+      "community": 79,
+      "norm_label": "toaster"
+    },
+    {
+      "label": "useIsMobile",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/hooks/use-mobile.tsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_hooks_use_mobile_useismobile",
+      "community": 80,
+      "norm_label": "useismobile"
+    },
+    {
+      "label": "ActiveBreak",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/hooks/useBreakStatus.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_hooks_usebreakstatus_activebreak",
+      "community": 81,
+      "norm_label": "activebreak"
+    },
+    {
+      "label": "useBreakStatus",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/hooks/useBreakStatus.ts",
+      "source_location": "L111",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_hooks_usebreakstatus_usebreakstatus",
+      "community": 83,
+      "norm_label": "usebreakstatus"
+    },
+    {
+      "label": "formatRemaining",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/hooks/useBreakStatus.ts",
+      "source_location": "L170",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_hooks_usebreakstatus_formatremaining",
+      "community": 82,
+      "norm_label": "formatremaining"
+    },
+    {
+      "label": "WatchlistSeverity",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4189",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_watchlistseverity",
+      "community": 94,
+      "norm_label": "watchlistseverity"
+    },
+    {
+      "label": "WatchlistModule",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4190",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_watchlistmodule",
+      "community": 93,
+      "norm_label": "watchlistmodule"
+    },
+    {
+      "label": "WatchlistViolation",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4198",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_watchlistviolation",
+      "community": 96,
+      "norm_label": "watchlistviolation"
+    },
+    {
+      "label": "WatchlistSummary",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4213",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_watchlistsummary",
+      "community": 95,
+      "norm_label": "watchlistsummary"
+    },
+    {
+      "label": "WatchlistData",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4227",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_watchlistdata",
+      "community": 92,
+      "norm_label": "watchlistdata"
+    },
+    {
+      "label": "AccountabilityThresholds",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4232",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_accountabilitythresholds",
+      "community": 84,
+      "norm_label": "accountabilitythresholds"
+    },
+    {
+      "label": "AccountabilityThresholdsPayload",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4245",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_accountabilitythresholdspayload",
+      "community": 85,
+      "norm_label": "accountabilitythresholdspayload"
+    },
+    {
+      "label": "ExpenseRow",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4294",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_expenserow",
+      "community": 87,
+      "norm_label": "expenserow"
+    },
+    {
+      "label": "ExpensesListResponse",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4317",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_expenseslistresponse",
+      "community": 88,
+      "norm_label": "expenseslistresponse"
+    },
+    {
+      "label": "ExpensesSummaryResponse",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4327",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_expensessummaryresponse",
+      "community": 89,
+      "norm_label": "expensessummaryresponse"
+    },
+    {
+      "label": "AttendanceAuditLog",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4455",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_attendanceauditlog",
+      "community": 86,
+      "norm_label": "attendanceauditlog"
+    },
+    {
+      "label": "FeedbackRating",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4550",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_feedbackrating",
+      "community": 90,
+      "norm_label": "feedbackrating"
+    },
+    {
+      "label": "FeedbackSummary",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/api.ts",
+      "source_location": "L4564",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_api_feedbacksummary",
+      "community": 91,
+      "norm_label": "feedbacksummary"
+    },
+    {
+      "label": "Capability",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/permissions.ts",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_permissions_capability",
+      "community": 97,
+      "norm_label": "capability"
+    },
+    {
+      "label": "userHas",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/permissions.ts",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_permissions_userhas",
+      "community": 98,
+      "norm_label": "userhas"
+    },
+    {
+      "label": "userHasAny",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/permissions.ts",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_permissions_userhasany",
+      "community": 100,
+      "norm_label": "userhasany"
+    },
+    {
+      "label": "userHasAll",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/permissions.ts",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_permissions_userhasall",
+      "community": 99,
+      "norm_label": "userhasall"
+    },
+    {
+      "label": "cn",
+      "file_type": "code",
+      "source_file": "Fortune-innovaties/fortune-campus/frontend/src/lib/utils.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "fortune_innovaties_fortune_campus_frontend_src_lib_utils_cn",
+      "community": 101,
+      "norm_label": "cn"
+    },
+    {
+      "label": "Fortune Campus Institute Management System",
+      "file_type": "concept",
+      "source_file": "fortune-campus/README.md",
+      "id": "fortune_campus_system",
+      "community": 18,
+      "norm_label": "fortune campus institute management system"
+    },
+    {
+      "label": "Fortune Campus Backend API",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/server.ts",
+      "id": "backend_app",
+      "community": 3,
+      "norm_label": "fortune campus backend api"
+    },
+    {
+      "label": "Fortune Campus Frontend",
+      "file_type": "code",
+      "source_file": "fortune-campus/frontend/src/main.tsx",
+      "id": "frontend_app",
+      "community": 3,
+      "norm_label": "fortune campus frontend"
+    },
+    {
+      "label": "Authentication Module",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/src/modules/auth/auth.controller.ts",
+      "id": "auth_module",
+      "community": 3,
+      "norm_label": "authentication module"
+    },
+    {
+      "label": "First-Time Setup Module",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/src/modules/setup/setup.controller.ts",
+      "id": "setup_module",
+      "community": 3,
+      "norm_label": "first-time setup module"
+    },
+    {
+      "label": "User Data Model",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/prisma/schema.prisma",
+      "id": "user_model",
+      "community": 3,
+      "norm_label": "user data model"
+    },
+    {
+      "label": "Branch Data Model",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/prisma/schema.prisma",
+      "id": "branch_model",
+      "community": 14,
+      "norm_label": "branch data model"
+    },
+    {
+      "label": "Lead Management Module",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/src/modules/leads/lead.controller.ts",
+      "id": "lead_module",
+      "community": 0,
+      "norm_label": "lead management module"
+    },
+    {
+      "label": "Admission Management Module",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/src/modules/admissions/admission.controller.ts",
+      "id": "admission_module",
+      "community": 0,
+      "norm_label": "admission management module"
+    },
+    {
+      "label": "Student Management Module",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/src/modules/students/student.controller.ts",
+      "id": "student_module",
+      "community": 0,
+      "norm_label": "student management module"
+    },
+    {
+      "label": "Trainer Management Module",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/src/modules/trainers/trainer.controller.ts",
+      "id": "trainer_module",
+      "community": 12,
+      "norm_label": "trainer management module"
+    },
+    {
+      "label": "Course Management Module",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/src/modules/courses/course.controller.ts",
+      "id": "course_module",
+      "community": 17,
+      "norm_label": "course management module"
+    },
+    {
+      "label": "Attendance Tracking Module",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/src/modules/attendance/attendance.controller.ts",
+      "id": "attendance_module",
+      "community": 13,
+      "norm_label": "attendance tracking module"
+    },
+    {
+      "label": "WhatsApp Integration Service",
+      "file_type": "code",
+      "source_file": "fortune-campus/backend/src/services/whatsapp.service.ts",
+      "id": "fortune_campus_backend_src_services_whatsapp_service",
+      "community": 0,
+      "norm_label": "whatsapp integration service"
+    },
+    {
+      "label": "Evolution API",
+      "file_type": "concept",
+      "source_file": "FEATURES.md",
+      "id": "evolution_api",
+      "community": 0,
+      "norm_label": "evolution api"
+    },
+    {
+      "label": "Student UPI Self-Pay (FR-08)",
+      "file_type": "concept",
+      "source_file": "Phase2_Report.html",
+      "id": "upi_self_pay",
+      "community": 0,
+      "norm_label": "student upi self-pay (fr-08)"
+    },
+    {
+      "label": "Equal Lead Distribution (FR-15)",
+      "file_type": "concept",
+      "source_file": "Phase2_Report.html",
+      "id": "equal_lead_distribution",
+      "community": 0,
+      "norm_label": "equal lead distribution (fr-15)"
+    },
+    {
+      "label": "Weekly Timetable (FR-17)",
+      "file_type": "concept",
+      "source_file": "Phase2_Report.html",
+      "id": "timetable_module",
+      "community": 12,
+      "norm_label": "weekly timetable (fr-17)"
+    },
+    {
+      "label": "Tirupur Branch",
+      "file_type": "concept",
+      "source_file": "branches.txt",
+      "source_location": null,
+      "id": "branches_txt_tirupur",
+      "community": 10,
+      "norm_label": "tirupur branch"
+    },
+    {
+      "label": "Salem Branch",
+      "file_type": "concept",
+      "source_file": "branches.txt",
+      "source_location": null,
+      "id": "branches_txt_salem",
+      "community": 9,
+      "norm_label": "salem branch"
+    },
+    {
+      "label": "Erode Branch",
+      "file_type": "concept",
+      "source_file": "branches.txt",
+      "source_location": null,
+      "id": "branches_txt_erode",
+      "community": 8,
+      "norm_label": "erode branch"
+    },
+    {
+      "label": "Coimbatore Branch",
+      "file_type": "concept",
+      "source_file": "branches.txt",
+      "source_location": null,
+      "id": "branches_txt_coimbatore",
+      "community": 15,
+      "norm_label": "coimbatore branch"
+    },
+    {
+      "label": "Students Table",
+      "file_type": "code",
+      "source_file": "check_admission.txt",
+      "source_location": null,
+      "id": "public_students",
+      "community": 2,
+      "norm_label": "students table"
+    },
+    {
+      "label": "Admissions Table",
+      "file_type": "code",
+      "source_file": "check_admission.txt",
+      "source_location": null,
+      "id": "public_admissions",
+      "community": 2,
+      "norm_label": "admissions table"
+    },
+    {
+      "label": "Users Table",
+      "file_type": "code",
+      "source_file": "check_student.txt",
+      "source_location": null,
+      "id": "public_users",
+      "community": 2,
+      "norm_label": "users table"
+    },
+    {
+      "label": "Batches Table",
+      "file_type": "code",
+      "source_file": "check_student.txt",
+      "source_location": null,
+      "id": "public_batches",
+      "community": 2,
+      "norm_label": "batches table"
+    },
+    {
+      "label": "Trainers Table",
+      "file_type": "code",
+      "source_file": "error_attendance.txt",
+      "source_location": null,
+      "id": "public_trainers",
+      "community": 2,
+      "norm_label": "trainers table"
+    },
+    {
+      "label": "Attendances Table",
+      "file_type": "code",
+      "source_file": "check_student.txt",
+      "source_location": null,
+      "id": "public_attendances",
+      "community": 2,
+      "norm_label": "attendances table"
+    },
+    {
+      "label": "Leads Table",
+      "file_type": "code",
+      "source_file": "inspection_results.txt",
+      "source_location": null,
+      "id": "public_leads",
+      "community": 110,
+      "norm_label": "leads table"
+    },
+    {
+      "label": "Courses Table",
+      "file_type": "code",
+      "source_file": "check_video_batch.txt",
+      "source_location": null,
+      "id": "public_courses",
+      "community": 2,
+      "norm_label": "courses table"
+    },
+    {
+      "label": "Portfolios Table",
+      "file_type": "code",
+      "source_file": "inspection_results.txt",
+      "source_location": null,
+      "id": "public_portfolios",
+      "community": 113,
+      "norm_label": "portfolios table"
+    },
+    {
+      "label": "Placements Table",
+      "file_type": "code",
+      "source_file": "inspection_results.txt",
+      "source_location": null,
+      "id": "public_placements",
+      "community": 112,
+      "norm_label": "placements table"
+    },
+    {
+      "label": "Companies Table",
+      "file_type": "code",
+      "source_file": "inspection_results.txt",
+      "source_location": null,
+      "id": "public_companies",
+      "community": 108,
+      "norm_label": "companies table"
+    },
+    {
+      "label": "Incentives Table",
+      "file_type": "code",
+      "source_file": "inspection_results.txt",
+      "source_location": null,
+      "id": "public_incentives",
+      "community": 109,
+      "norm_label": "incentives table"
+    },
+    {
+      "label": "Notifications Table",
+      "file_type": "code",
+      "source_file": "inspection_results.txt",
+      "source_location": null,
+      "id": "public_notifications",
+      "community": 111,
+      "norm_label": "notifications table"
+    },
+    {
+      "label": "WhatsApp Logs Table",
+      "file_type": "code",
+      "source_file": "inspection_results.txt",
+      "source_location": null,
+      "id": "public_whatsapp_logs",
+      "community": 114,
+      "norm_label": "whatsapp logs table"
+    },
+    {
+      "label": "Student 1 (Salem)",
+      "file_type": "concept",
+      "source_file": "check_admission_utf8.txt",
+      "source_location": null,
+      "id": "student_1_salem",
+      "community": 9,
+      "norm_label": "student 1 (salem)"
+    },
+    {
+      "label": "Erode Branch Head",
+      "file_type": "concept",
+      "source_file": "erode_head_details.txt",
+      "source_location": null,
+      "id": "erode_branch_head",
+      "community": 8,
+      "norm_label": "erode branch head"
+    },
+    {
+      "label": "Vimal (Channel Partner)",
+      "file_type": "concept",
+      "source_file": "diag_output.txt",
+      "source_location": null,
+      "id": "vimal_tiruppur",
+      "community": 10,
+      "norm_label": "vimal (channel partner)"
+    },
+    {
+      "label": "Automation Worker",
+      "file_type": "code",
+      "source_file": "src/modules/notifications/automation.worker.ts",
+      "id": "src_modules_notifications_automation_worker",
+      "community": 11,
+      "norm_label": "automation worker"
+    },
+    {
+      "label": "Company Controller",
+      "file_type": "code",
+      "source_file": "src/modules/placements/company.controller.ts",
+      "id": "src_modules_placements_company_controller",
+      "community": 115,
+      "norm_label": "company controller"
+    },
+    {
+      "label": "Placement Controller",
+      "file_type": "code",
+      "source_file": "src/modules/placements/placement.controller.ts",
+      "id": "src_modules_placements_placement_controller",
+      "community": 116,
+      "norm_label": "placement controller"
+    },
+    {
+      "label": "Prisma Seed Script",
+      "file_type": "code",
+      "source_file": "prisma/seed.ts",
+      "id": "prisma_seed",
+      "community": 5,
+      "norm_label": "prisma seed script"
+    },
+    {
+      "label": "Test Students Script",
+      "file_type": "code",
+      "source_file": "test-students.ts",
+      "id": "test_students",
+      "community": 5,
+      "norm_label": "test students script"
+    },
+    {
+      "label": "Prisma Schema",
+      "file_type": "document",
+      "source_file": "prisma/schema.prisma",
+      "id": "prisma_schema",
+      "community": 5,
+      "norm_label": "prisma schema"
+    },
+    {
+      "label": "Supabase PostgreSQL Database",
+      "file_type": "concept",
+      "source_file": "prisma_debug.txt",
+      "id": "database_supabase",
+      "community": 5,
+      "norm_label": "supabase postgresql database"
+    },
+    {
+      "label": "Public Users Table",
+      "file_type": "document",
+      "source_file": "public_users_columns.txt",
+      "id": "public_users_table",
+      "community": 5,
+      "norm_label": "public users table"
+    },
+    {
+      "label": "NotificationService",
+      "file_type": "code",
+      "source_file": "src/modules/notifications/automation.worker.ts",
+      "id": "notification_service",
+      "community": 11,
+      "norm_label": "notificationservice"
+    },
+    {
+      "label": "Flexible Permissions Implementation Spec",
+      "file_type": "document",
+      "source_file": "docs/FLEXIBLE_PERMISSIONS_SPEC.md",
+      "id": "docs_flexible_permissions_spec",
+      "community": 4,
+      "norm_label": "flexible permissions implementation spec"
+    },
+    {
+      "label": "Permissions Library",
+      "file_type": "code",
+      "source_file": "backend/src/lib/permissions.ts",
+      "id": "backend_src_lib_permissions",
+      "community": 4,
+      "norm_label": "permissions library"
+    },
+    {
+      "label": "Permission Middleware",
+      "file_type": "code",
+      "source_file": "backend/src/middlewares/permission.middleware.ts",
+      "id": "backend_src_middlewares_permission_middleware",
+      "community": 4,
+      "norm_label": "permission middleware"
+    },
+    {
+      "label": "CEO User Guide",
+      "file_type": "document",
+      "source_file": "user-guides/1-CEO-Guide.html",
+      "id": "user_guides_1_ceo_guide",
+      "community": 7,
+      "norm_label": "ceo user guide"
+    },
+    {
+      "label": "Channel Partner User Guide",
+      "file_type": "document",
+      "source_file": "user-guides/2-Channel-Partner-Guide.html",
+      "id": "user_guides_2_channel_partner_guide",
+      "community": 7,
+      "norm_label": "channel partner user guide"
+    },
+    {
+      "label": "Trainer User Guide",
+      "file_type": "document",
+      "source_file": "user-guides/3-Trainer-Guide.html",
+      "id": "user_guides_3_trainer_guide",
+      "community": 7,
+      "norm_label": "trainer user guide"
+    },
+    {
+      "label": "Fortune Innovatives Favicon",
+      "file_type": "image",
+      "source_file": "frontend/public/fi-favicon.svg",
+      "id": "frontend_public_fi_favicon_svg",
+      "community": 102,
+      "norm_label": "fortune innovatives favicon"
+    },
+    {
+      "label": "Fortune Innovatives Logo (Black Background)",
+      "file_type": "image",
+      "source_file": "frontend/public/logo.jpg",
+      "id": "frontend_public_logo_jpg",
+      "community": 7,
+      "norm_label": "fortune innovatives logo (black background)"
+    },
+    {
+      "label": "Fortune Innovatives Logo (White Background)",
+      "file_type": "image",
+      "source_file": "frontend/src/assets/logo.jpg",
+      "id": "frontend_src_assets_logo_jpg",
+      "community": 7,
+      "norm_label": "fortune innovatives logo (white background)"
+    },
+    {
+      "label": "The Chennai Silks Logo",
+      "file_type": "image",
+      "source_file": "frontend/src/assets/partners/chennai_silks.png",
+      "id": "frontend_src_assets_partners_chennai_silks",
+      "community": 103,
+      "norm_label": "the chennai silks logo"
+    },
+    {
+      "label": "Code Pixel Logo",
+      "file_type": "image",
+      "source_file": "frontend/src/assets/partners/code_pixel.png",
+      "id": "frontend_src_assets_partners_code_pixel",
+      "community": 104,
+      "norm_label": "code pixel logo"
+    },
+    {
+      "label": "Grasp Clothings Logo",
+      "file_type": "image",
+      "source_file": "frontend/src/assets/partners/grasp.png",
+      "id": "frontend_src_assets_partners_grasp",
+      "community": 105,
+      "norm_label": "grasp clothings logo"
+    },
+    {
+      "label": "Heini Logo",
+      "file_type": "image",
+      "source_file": "frontend/src/assets/partners/heini.png",
+      "id": "frontend_src_assets_partners_heini",
+      "community": 106,
+      "norm_label": "heini logo"
+    },
+    {
+      "label": "Nittany Logo",
+      "file_type": "image",
+      "source_file": "frontend/src/assets/partners/nittany.png",
+      "id": "frontend_src_assets_partners_nittany",
+      "community": 107,
+      "norm_label": "nittany logo"
+    },
+    {
+      "label": "User Model",
+      "file_type": "code",
+      "source_file": "docs/FLEXIBLE_PERMISSIONS_SPEC.md",
+      "id": "prisma_user_model",
+      "community": 4,
+      "norm_label": "user model"
+    },
+    {
+      "label": "Capability Grant Log Model",
+      "file_type": "code",
+      "source_file": "docs/FLEXIBLE_PERMISSIONS_SPEC.md",
+      "id": "prisma_capability_grant_log_model",
+      "community": 4,
+      "norm_label": "capability grant log model"
+    },
+    {
+      "label": "Fortune Campus - User Guides Index",
+      "file_type": "document",
+      "source_file": "user-guides/index.html",
+      "id": "user_guides_index",
+      "community": 6,
+      "norm_label": "fortune campus - user guides index"
+    },
+    {
+      "label": "Student User Guide",
+      "file_type": "document",
+      "source_file": "user-guides/4-Student-Guide.html",
+      "id": "user_guides_4_student_guide",
+      "community": 6,
+      "norm_label": "student user guide"
+    },
+    {
+      "label": "Telecaller User Guide",
+      "file_type": "document",
+      "source_file": "user-guides/5-Telecaller-Guide.html",
+      "id": "user_guides_5_telecaller_guide",
+      "community": 6,
+      "norm_label": "telecaller user guide"
+    },
+    {
+      "label": "Fortune Campus CRM",
+      "file_type": "concept",
+      "source_file": "user-guides/index.html",
+      "id": "fortune_campus_crm",
+      "community": 6,
+      "norm_label": "fortune campus crm"
+    },
+    {
+      "label": "Student",
+      "file_type": "concept",
+      "source_file": "user-guides/4-Student-Guide.html",
+      "id": "student_role",
+      "community": 1,
+      "norm_label": "student"
+    },
+    {
+      "label": "Telecaller",
+      "file_type": "concept",
+      "source_file": "user-guides/5-Telecaller-Guide.html",
+      "id": "telecaller_role",
+      "community": 1,
+      "norm_label": "telecaller"
+    },
+    {
+      "label": "CEO",
+      "file_type": "concept",
+      "source_file": "user-guides/index.html",
+      "id": "ceo_role",
+      "community": 16,
+      "norm_label": "ceo"
+    },
+    {
+      "label": "Channel Partner",
+      "file_type": "concept",
+      "source_file": "user-guides/index.html",
+      "id": "channel_partner_role",
+      "community": 1,
+      "norm_label": "channel partner"
+    },
+    {
+      "label": "Trainer",
+      "file_type": "concept",
+      "source_file": "user-guides/index.html",
+      "id": "trainer_role",
+      "community": 1,
+      "norm_label": "trainer"
+    },
+    {
+      "label": "QR Attendance System",
+      "file_type": "concept",
+      "source_file": "user-guides/4-Student-Guide.html",
+      "id": "qr_attendance_system",
+      "community": 1,
+      "norm_label": "qr attendance system"
+    },
+    {
+      "label": "Portfolio Submission System",
+      "file_type": "concept",
+      "source_file": "user-guides/4-Student-Guide.html",
+      "id": "portfolio_submission_system",
+      "community": 1,
+      "norm_label": "portfolio submission system"
+    },
+    {
+      "label": "Lead Pipeline (Kanban)",
+      "file_type": "concept",
+      "source_file": "user-guides/5-Telecaller-Guide.html",
+      "id": "lead_pipeline_kanban",
+      "community": 1,
+      "norm_label": "lead pipeline (kanban)"
+    },
+    {
+      "label": "Sirah Digital",
+      "file_type": "concept",
+      "source_file": "user-guides/index.html",
+      "id": "sirah_digital",
+      "community": 6,
+      "norm_label": "sirah digital"
+    }
+  ],
+  "links": [
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fortune-campus/backend/src/app.ts",
+      "source": "backend_app",
+      "target": "auth_module"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fortune-campus/backend/src/app.ts",
+      "source": "backend_app",
+      "target": "setup_module"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fortune-campus/backend/FRONTEND_INTEGRATION.md",
+      "source": "frontend_app",
+      "target": "backend_app"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fortune-campus/backend/src/modules/auth/auth.controller.ts",
+      "source": "auth_module",
+      "target": "user_model"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Phase2_Report.html",
+      "source": "equal_lead_distribution",
+      "target": "lead_module"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "fortune-campus/backend/API_SUMMARY.md",
+      "source": "lead_module",
+      "target": "admission_module"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fortune-campus/backend/API_SUMMARY.md",
+      "source": "lead_module",
+      "target": "fortune_campus_backend_src_services_whatsapp_service"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "fortune-campus/backend/API_SUMMARY.md",
+      "source": "admission_module",
+      "target": "student_module"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Phase2_Report.html",
+      "source": "upi_self_pay",
+      "target": "admission_module"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Phase2_Report.html",
+      "source": "timetable_module",
+      "target": "trainer_module"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fortune-campus/backend/src/services/whatsapp.service.ts",
+      "source": "fortune_campus_backend_src_services_whatsapp_service",
+      "target": "evolution_api"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "diag_output.txt",
+      "source": "vimal_tiruppur",
+      "target": "branches_txt_tirupur"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "check_admission_utf8.txt",
+      "source": "student_1_salem",
+      "target": "branches_txt_salem"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "erode_head_details.txt",
+      "source": "erode_branch_head",
+      "target": "branches_txt_erode"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "check_student.txt",
+      "source": "public_attendances",
+      "target": "public_students"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "check_admission.txt",
+      "source": "public_students",
+      "target": "public_admissions"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "check_student.txt",
+      "source": "public_students",
+      "target": "public_batches"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "check_admission.txt",
+      "source": "public_students",
+      "target": "public_users"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "check_student.txt",
+      "source": "public_attendances",
+      "target": "public_batches"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "check_video_batch.txt",
+      "source": "public_batches",
+      "target": "public_courses"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "check_student.txt",
+      "source": "public_batches",
+      "target": "public_trainers"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/notifications/automation.worker.ts",
+      "source": "src_modules_notifications_automation_worker",
+      "target": "notification_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "prisma_debug.txt",
+      "source": "prisma_seed",
+      "target": "prisma_schema"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "test_error.txt",
+      "source": "test_students",
+      "target": "prisma_schema"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "prisma_debug.txt",
+      "source": "prisma_schema",
+      "target": "database_supabase"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public_users_columns.txt",
+      "source": "database_supabase",
+      "target": "public_users_table"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/FLEXIBLE_PERMISSIONS_SPEC.md",
+      "source": "docs_flexible_permissions_spec",
+      "target": "backend_src_lib_permissions"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/FLEXIBLE_PERMISSIONS_SPEC.md",
+      "source": "docs_flexible_permissions_spec",
+      "target": "backend_src_middlewares_permission_middleware"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/FLEXIBLE_PERMISSIONS_SPEC.md",
+      "source": "docs_flexible_permissions_spec",
+      "target": "prisma_capability_grant_log_model"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/FLEXIBLE_PERMISSIONS_SPEC.md",
+      "source": "docs_flexible_permissions_spec",
+      "target": "prisma_user_model"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/middlewares/permission.middleware.ts",
+      "source": "backend_src_middlewares_permission_middleware",
+      "target": "backend_src_lib_permissions"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "frontend/public/logo.jpg",
+      "source": "frontend_public_logo_jpg",
+      "target": "user_guides_1_ceo_guide"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "frontend/src/assets/logo.jpg",
+      "source": "frontend_src_assets_logo_jpg",
+      "target": "user_guides_1_ceo_guide"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "user-guides/1-CEO-Guide.html",
+      "source": "user_guides_1_ceo_guide",
+      "target": "user_guides_2_channel_partner_guide"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "user-guides/1-CEO-Guide.html",
+      "source": "user_guides_1_ceo_guide",
+      "target": "user_guides_3_trainer_guide"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "user-guides/index.html",
+      "source": "user_guides_index",
+      "target": "sirah_digital"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "user-guides/index.html",
+      "source": "user_guides_index",
+      "target": "user_guides_4_student_guide"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "user-guides/index.html",
+      "source": "user_guides_index",
+      "target": "user_guides_5_telecaller_guide"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "user-guides/4-Student-Guide.html",
+      "source": "user_guides_4_student_guide",
+      "target": "fortune_campus_crm"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "user-guides/5-Telecaller-Guide.html",
+      "source": "user_guides_5_telecaller_guide",
+      "target": "fortune_campus_crm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "user-guides/4-Student-Guide.html",
+      "source": "student_role",
+      "target": "portfolio_submission_system"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "user-guides/4-Student-Guide.html",
+      "source": "student_role",
+      "target": "qr_attendance_system"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "user-guides/4-Student-Guide.html",
+      "source": "student_role",
+      "target": "trainer_role"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "user-guides/5-Telecaller-Guide.html",
+      "source": "telecaller_role",
+      "target": "channel_partner_role"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "user-guides/5-Telecaller-Guide.html",
+      "source": "telecaller_role",
+      "target": "lead_pipeline_kanban"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "user-guides/5-Telecaller-Guide.html",
+      "source": "telecaller_role",
+      "target": "trainer_role"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "core_academic_flow",
+      "label": "Core Academic Workflow",
+      "nodes": [
+        "course_module",
+        "trainer_module",
+        "student_module",
+        "attendance_module",
+        "timetable_module"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "FEATURES.md"
+    },
+    {
+      "id": "lead_to_student_pipeline",
+      "label": "Lead-to-Student Conversion Pipeline",
+      "nodes": [
+        "lead_module",
+        "admission_module",
+        "student_module",
+        "equal_lead_distribution"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Phase2_Report.html"
+    },
+    {
+      "id": "system_security_framework",
+      "label": "System Security & Auth Framework",
+      "nodes": [
+        "auth_module",
+        "setup_module",
+        "user_model",
+        "branch_model"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "fortune-campus/PRODUCTION_READY.md"
+    },
+    {
+      "id": "core_academic_entities",
+      "label": "Core Academic Entities",
+      "nodes": [
+        "public_students",
+        "public_batches",
+        "public_courses",
+        "public_trainers",
+        "public_attendances"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "inspection_results.txt"
+    },
+    {
+      "id": "crm_entities",
+      "label": "CRM and Admission Flow",
+      "nodes": [
+        "public_leads",
+        "public_admissions",
+        "public_students"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "inspection_results.txt"
+    },
+    {
+      "id": "backend_notification_flow",
+      "label": "Notification Automation Flow",
+      "nodes": [
+        "src_modules_notifications_automation_worker",
+        "notification_service"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "src/modules/notifications/automation.worker.ts"
+    },
+    {
+      "id": "permission_system_implementation",
+      "label": "Flexible Permission System",
+      "nodes": [
+        "docs_flexible_permissions_spec",
+        "backend_src_lib_permissions",
+        "backend_src_middlewares_permission_middleware",
+        "prisma_user_model",
+        "prisma_capability_grant_log_model"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "id": "user_role_documentation",
+      "label": "User Role Documentation",
+      "nodes": [
+        "user_guides_1_ceo_guide",
+        "user_guides_2_channel_partner_guide",
+        "user_guides_3_trainer_guide"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "id": "fortune_campus_roles",
+      "label": "Fortune Campus User Roles",
+      "nodes": [
+        "ceo_role",
+        "channel_partner_role",
+        "trainer_role",
+        "student_role",
+        "telecaller_role"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "user-guides/index.html"
+    },
+    {
+      "id": "admission_workflow",
+      "label": "Lead to Admission Workflow",
+      "nodes": [
+        "telecaller_role",
+        "channel_partner_role",
+        "trainer_role"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "user-guides/5-Telecaller-Guide.html"
+    }
+  ],
+  "built_at_commit": "7b22d1abd77c34978276583d0d8025da6e67d2c2"
+}

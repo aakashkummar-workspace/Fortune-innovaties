@@ -1,0 +1,557 @@
+  ============================================================
+  FORTUNE INNOVATIVES — COMPLETE FEATURE & LOGIN GUIDE
+  ============================================================
+
+  A multi-tenant, multi-branch educational institute management platform
+  combining lead acquisition, telecaller workflow, admissions, fee tracking,
+  academic delivery (batches, attendance, LMS), placement, payroll,
+  performance analytics, and operational settings.
+
+  Frontend:   https://crm.fortuneinnovatives.com
+  Backend API: https://api.fortuneinnovatives.in
+  Database:   PostgreSQL on Supabase
+  Auth:       JWT (role + branch claims)
+  Messaging:  WhatsApp via Evolution API (message.sirahagents.com)
+
+
+  ============================================================
+  PART 1 — LOGIN DETAILS
+  ============================================================
+
+  1.1 LOGIN URLS
+  ------------------------------------------------------------
+  URL                                                            Purpose                                       Auth Required
+  https://crm.fortuneinnovatives.com/login                       All staff & student login                     Yes
+  https://crm.fortuneinnovatives.com/setup                       First-time CEO setup (only if no users)       No
+  https://crm.fortuneinnovatives.com/enquiry                     Public lead enquiry form                      No
+  https://crm.fortuneinnovatives.com/new-admission               Public admission application                  No
+
+
+  1.2 DEFAULT SEED CREDENTIALS (DEVELOPMENT ONLY)
+  ------------------------------------------------------------
+  WARNING: These are development defaults only. In production, the CEO creates
+  and manages real credentials via the User Management page.
+
+  Role               Email                                            Password      Branch
+  CEO                ceo@fortunecampus.com                            Admin@123     All branches
+  Branch Head / CP   head.main@fortunecampus.com                      Admin@123     Main branch
+  Trainer            trainer1@fortunecampus.com                       Admin@123     Main branch
+  Student            vikram.reddy@student.fortunecampus.com           Student@123   Main branch
+
+  Production credentials are issued by the CEO during onboarding and delivered
+  via secure channel. Reset is done via the Profile page (self-serve) or by an
+  ADMIN via the User Management -> Reset Password action.
+
+
+  1.3 ROLE HIERARCHY
+  ------------------------------------------------------------
+  Role               Code                Scope                                Created by
+  CEO                CEO                 Org-wide, all branches               Setup wizard (first run)
+  Admin              ADMIN               Org-wide ops                         CEO
+  Channel Partner    CHANNEL_PARTNER     One or more branches                 CEO / Admin
+  Trainer            TRAINER             Assigned batches                     CEO / Admin / CP
+  Telecaller         TELECALLER          Branch-visible leads + own leads     CEO / Admin / CP
+  Student            STUDENT             Self only                            Auto-created on Admission -> Student conversion
+
+
+  1.4 PASSWORD MANAGEMENT
+  ------------------------------------------------------------
+  - Self password change: Profile -> Change Password (current + new + confirm).
+  - Admin/CEO reset: Users page -> row -> Reset Password -> system generates a
+    temporary password and shows it once. User must change it after first login.
+  - Forgot password: No public flow — user must contact the CEO/Admin to reset.
+
+
+  1.5 SESSION & LOGOUT
+  ------------------------------------------------------------
+  - JWT token stored in localStorage (auth_token).
+  - Token includes: user id, role, branchId, assignedBranches.
+  - Logout clears the token + redirects to /login.
+  - Token expiry triggers automatic logout on next API call.
+
+
+  ============================================================
+  PART 2 — FEATURES BY ROLE (WHAT EACH LOGIN CAN DO)
+  ============================================================
+
+  Each role section below shows: Routes accessible, Pages they see,
+  Actions they can perform, What's hidden from them.
+
+
+  ------------------------------------------------------------
+  2.1 CEO LOGIN (role = CEO)
+  ------------------------------------------------------------
+  The CEO has unrestricted org-wide access. Sees every branch, every user,
+  every report. Can also act as a trainer.
+
+  PAGES ACCESSIBLE:
+  Path                                Page                       Purpose
+  /                                   Dashboard                  CEO-level KPIs, cross-branch summary
+  /users                              User Management            Create, edit, deactivate any user
+  /leads, /telecaller/pipeline        Leads + Pipeline           All leads across all branches
+  /admissions                         Admissions                 All branches
+  /courses                            Courses                    Master course catalogue
+  /trainers                           Trainers                   All trainers, all branches
+  /batches                            Batches                    All batches, all branches
+  /students                           Students                   All students
+  /student-roster                     Student Roster             Master sheet — every student, every course
+  /fees                               Fees Management            Org-wide collection, approvals
+  /attendance                         Attendance                 All batches
+  /portfolio                          Portfolio                  All trainers' tasks
+  /placements                         Placements                 All branches
+  /incentives                         Incentives                 All recipients
+  /growth                             Student Growth             Org-wide
+  /notifications                      Notifications              All system events
+  /telecaller/dashboard               Telecaller Dashboard       Cross-branch telecaller stats
+  /telecaller/analytics               Telecaller Analytics       Per-telecaller deep dive
+  /ceo-analytics                      CEO Performance            Cross-branch trainer + telecaller leaderboard
+  /payroll                            Payroll Dashboard          Salaries / Tasks / Penalties
+  /course-progress                    LMS Progress               All batches
+  /activity-report                    Activity Report            Who did what, where, when
+  /settings/terms                     Terms Settings             Edit T&C
+  /settings/whatsapp-templates        WhatsApp Templates         Manage all message templates
+  /settings/software-options          Software Options           Manage taught-software list
+  /settings/batch-time-slots          Batch Time Slots           Manage preset timings
+  /settings/institute-location        Institute Location         Lat/long + geofence
+  /task-templates                     Task Templates             Reusable task definitions
+  /profile                            Profile                    Own info
+
+  CEO-EXCLUSIVE FEATURES:
+  - CEO Performance dashboard — leaderboard view across branches.
+  - Branch Holidays — multi-day mark, fallback branchId when CEO has none.
+  - All-branch Holiday Calendar.
+  - Activity Report with full access (no branch filter).
+  - Approve any fee payment request.
+  - Override any auto-assignment (re-route leads, change trainer).
+  - Branch creation & deactivation.
+  - Rating toggle per branch.
+  - Notification: System alerts (CEO-only category).
+
+  WHAT CEO CAN ASSIGN / MANAGE:
+  - Create any user role (Admin, CP, Trainer, Telecaller).
+  - Assign telecallers to branches (single or multiple).
+  - Approve admission requests, fee requests, task extension requests.
+  - Mark holidays for any branch.
+  - Assign tasks to any user (including self).
+  - Bulk-upload leads (CSV / XLSX).
+
+
+  ------------------------------------------------------------
+  2.2 ADMIN LOGIN (role = ADMIN)
+  ------------------------------------------------------------
+  Org-wide operational role. Similar reach to CEO for day-to-day ops but
+  typically without analytics-only routes.
+
+  PAGES ACCESSIBLE:
+  Path                                Page                       Notes
+  /                                   Dashboard                  Same as CEO
+  /users                              User Management            Create/edit users
+  /admissions                         Admissions                 All branches
+  /courses                            Courses                    All
+  /trainers                           Trainers                   All
+  /batches                            Batches                    All
+  /students                           Students                   All
+  /student-roster                     Student Roster             All
+  /placements                         Placements                 All
+  /payroll                            Payroll                    Salaries / Tasks / Penalties
+  /notifications                      Notifications              —
+  /activity-report                    Activity Report            —
+  /settings/*                         All Settings               T&C, WhatsApp, software, time slots, location
+  /task-templates                     Task Templates             —
+  /profile                            Profile                    —
+
+  ADMIN-SPECIFIC ACTIONS:
+  - Reset any user's password.
+  - Create / deactivate users.
+  - Manage WhatsApp templates.
+  - Edit institute location & geofence radius.
+
+  WHAT ADMIN DOESN'T SEE:
+  - /ceo-analytics (CEO-only)
+  - /telecaller/dashboard, /telecaller/analytics (CEO/Telecaller only)
+  - /fees (CEO/CP only)
+  - /attendance, /portfolio, /growth (operational/CEO/CP/Trainer)
+
+
+  ------------------------------------------------------------
+  2.3 CHANNEL PARTNER LOGIN (role = CHANNEL_PARTNER)
+  ------------------------------------------------------------
+  Acts as a "Branch CEO". Manages one or more branches end-to-end.
+
+  PAGES ACCESSIBLE:
+  Path                                Page                       Scope
+  /                                   CP Dashboard               Branch-scoped KPIs
+  /users                              User Management            Branch users
+  /leads, /telecaller/pipeline        Leads                      Branch leads
+  /admissions                         Admissions                 Branch admissions
+  /courses                            Courses                    All courses (read), branch course assignment
+  /trainers                           Trainers                   Branch trainers
+  /batches                            Batches                    Branch batches
+  /students                           Students                   Branch students
+  /student-roster                     Roster                     Branch
+  /fees                               Fees                       Branch — approve payments
+  /attendance                         Attendance                 Branch batches
+  /portfolio                          Portfolio                  Branch trainers' tasks
+  /placements                         Placements                 Branch students
+  /incentives                         Incentives                 Branch
+  /growth                             Growth                     Branch students
+  /notifications                      Notifications              —
+  /payroll                            Payroll                    Branch staff
+  /course-progress                    LMS Progress               Branch batches
+  /activity-report                    Activity Report            Branch scope
+  /settings/*                         All Settings               Same as Admin
+  /task-templates                     Task Templates             —
+  /profile                            Profile                    —
+
+  CP-SPECIFIC FEATURES:
+  - Acts as Trainer — CP appears in trainer dropdowns and can be assigned to
+    batches. Can conduct QR sessions and mark attendance.
+  - Approve fee payments for branch students.
+  - Approve admission conversion requests from telecallers.
+  - Assign telecallers to leads.
+  - Branch holidays — mark branch-specific holidays.
+  - Bulk lead upload for the branch.
+  - Receive task assignments from CEO.
+  - Assign tasks to anyone in the branch.
+
+
+  ------------------------------------------------------------
+  2.4 TRAINER LOGIN (role = TRAINER)
+  ------------------------------------------------------------
+  Delivers academic content for assigned batches. Sees only students/batches
+  they teach.
+
+  PAGES ACCESSIBLE:
+  Path                                Page                       Notes
+  /                                   Trainer Dashboard          Today's classes, assigned batches
+  /admission-requests                 Admission Requests         Approve/reject student additions to your batches
+  /courses                            Courses                    Read-only, see syllabus
+  /batches                            Batches                    Only batches where they're primary or secondary trainer
+  /students                           Students                   Only students in their batches
+  /attendance                         Attendance                 Mark attendance for own batches
+  /portfolio                          Portfolio                  Tasks for own batches
+  /growth                             Student Growth             Own students' progress
+  /course-progress                    LMS Progress               Own batches
+  /payroll                            Payroll                    Own salary + own tasks
+  /activity-report                    Activity Report            Own activity
+  /notifications                      Notifications              —
+  /profile                            Profile                    —
+
+  TRAINER-SPECIFIC FEATURES:
+  - Mark Attendance — manual or QR-based.
+  - Start QR Session — generate QR for batch; students scan.
+  - Two-trainer batch support — if Primary trainer, sees own slice; if
+    Secondary, sees own slice only. Each trainer's QR is filtered to their slice.
+  - Approve student additions to own batches (/admission-requests).
+  - Mark Module/Topic Completion — both batch-level and per-student.
+  - Submit Class & Portfolio Reports — daily/weekly.
+  - Mark Own Attendance — daily clock-in/out with location + selfie.
+  - View student growth — attendance, test scores, portfolio.
+  - Receive task assignments from CEO/CP/Admin.
+  - Receive WhatsApp + in-app notifications for new students, demo invites,
+    task assignments, portfolio submissions.
+
+  WHAT TRAINER CANNOT SEE:
+  - Other trainers' batches/students.
+  - Lead pipeline.
+  - Fees, incentives (CEO/CP only).
+  - User management.
+  - Settings.
+  - Other branches.
+
+
+  ------------------------------------------------------------
+  2.5 TELECALLER LOGIN (role = TELECALLER)
+  ------------------------------------------------------------
+  Manages lead pipeline, calls, follow-ups. Branch-scoped.
+
+  PAGES ACCESSIBLE:
+  Path                                Page                       Notes
+  /                                   Telecaller Dashboard       My leads by status, follow-ups due
+  /telecaller/dashboard               Telecaller Dashboard       Detailed
+  /telecaller/pipeline                Lead Pipeline              Kanban + flat view
+  /telecaller/analytics               Telecaller Analytics       Own performance
+  /leads                              Leads (table view)         Same data, table layout
+  /admissions                         Admissions                 Branch admissions
+  /notifications                      Notifications              —
+  /profile                            Profile                    —
+
+  TELECALLER-SPECIFIC FEATURES:
+  - Lead Pipeline — drag-and-drop between pipeline statuses.
+  - Search-aware view — typing in search auto-switches to flat list across
+    all statuses (incl. LOST, CALL_BACK_LATER, NOT_INTERESTED).
+  - Log Calls — connected / not picked / switched off + notes + next-follow-up.
+  - Edit past call logs — inline edit notes and next-due-date.
+  - Send WhatsApp — pre-templated welcome / follow-up / demo invite.
+  - Convert lead to admission — guided form: course + batch + start date.
+  - Auto-batch on convert — finds matching batch by course + timing or creates
+    a new one.
+  - Bulk Lead Upload — CSV / XLSX with validation, dedupe, no WhatsApp spam.
+  - View branch-visible leads — sees leads in any branch where they're a
+    member of assignedBranches, plus leads explicitly assignedToId them.
+  - Lead Status History — visible per lead.
+
+  WHAT TELECALLER CANNOT SEE:
+  - Other branches' leads (unless added to those branches' assignedBranches).
+  - Trainers, batches, students, attendance, portfolio.
+  - Fees, payroll, incentives.
+  - User management, settings.
+
+
+  ------------------------------------------------------------
+  2.6 STUDENT LOGIN (role = STUDENT)
+  ------------------------------------------------------------
+  Self-service portal. Only their own data.
+
+  PAGES ACCESSIBLE:
+  Path                                Page                       Notes
+  /                                   Student Dashboard          Own progress, attendance, fees, today's class
+  /qr-scan                            QR Scan                    Scan trainer's QR to mark attendance
+  /notifications                      Notifications              Own notifications
+  /profile                            Profile                    Update own info
+
+  STUDENT-SPECIFIC FEATURES:
+  - Scan QR for attendance — geofence-validated to branch.
+  - Wrong-trainer guard — friendly rejection if scanning a different trainer's
+    QR in a 2-trainer batch.
+  - View own attendance history — color-coded calendar (PRESENT / ABSENT /
+    LATE / HOLIDAY / SATURDAY).
+  - View own course progress — module/topic completion %.
+  - View own portfolio tasks — see assigned tasks + submission status.
+  - View own test scores.
+  - View own fee balance — outstanding, paid, upcoming installments.
+  - Update profile — name, phone, photo, password.
+  - Receive WhatsApp — fee reminders, demo invites, class notifications.
+
+  WHAT STUDENT CANNOT SEE:
+  - Anything not their own (no other students, batches, courses, trainers,
+    staff, leads, settings, reports).
+
+
+  ============================================================
+  PART 3 — CROSS-CUTTING FEATURES
+  ============================================================
+
+  3.1 NOTIFICATIONS (all logged-in users)
+  ------------------------------------------------------------
+  - Bell icon in top bar with unread count.
+  - Categories per role:
+    * CEO / Admin / CP — lead activity, admission, fee approval needed,
+      task assigned, system alerts.
+    * Trainer — new student in batch, portfolio submission, task assigned,
+      attendance approval.
+    * Telecaller — new lead assigned, follow-up due, WhatsApp delivered/failed.
+    * Student — fee due, class today, portfolio task assigned, test scheduled.
+  - Deep-linking — each notification clicks through to the exact page +
+    tab + scrolled position. E.g., "Task Added" -> /payroll?tab=tasks and
+    auto-scrolls to the task list.
+
+
+  3.2 WHATSAPP INTEGRATION
+  ------------------------------------------------------------
+  - Evolution API instance "Fortune" at message.sirahagents.com.
+  - Auto-triggered messages:
+    * Welcome on lead creation (manual creation only — bulk upload is silent)
+    * Follow-up reminders
+    * Fee reminders
+    * Demo invites
+  - WhatsAppLog — every send recorded with status (sent, delivered, failed).
+  - Manual send — telecaller can send a templated WhatsApp from the lead view.
+
+
+  3.3 MULTI-BRANCH SUPPORT
+  ------------------------------------------------------------
+  - Branches have name, code, address, lat/long, geofence radius, totalLeads
+    counter, optional rating toggle.
+  - Users can be primary-assigned to one branch + secondary-assigned to many
+    (assignedBranches).
+  - All queries auto-scope by branch via enforceBranchAccess middleware.
+
+
+  3.4 AUTO-BACKFILL / SELF-HEALING
+  ------------------------------------------------------------
+  - Server boot runs idempotent backfills:
+    * Conductor trainers (CP/CEO with TRAINER capability).
+    * Notification links (deep-link paths set on legacy notifications).
+  - Raw-SQL fallback pattern for schema fields not yet in regenerated Prisma
+    client.
+
+
+  ============================================================
+  PART 4 — PUBLIC-FACING ENDPOINTS (NO LOGIN)
+  ============================================================
+
+  URL                          Purpose
+  /enquiry                     Public lead enquiry form
+  /new-admission               Public admission application
+  POST /api/leads/public       Backend public lead intake
+
+  These bypass auth and write directly to the leads/admissions tables with
+  auto-branch assignment based on the form's branch selector.
+
+
+  ============================================================
+  PART 5 — DATA MODELS (57 TOTAL)
+  ============================================================
+
+  Auth & access:
+    User, Branch
+
+  Leads pipeline:
+    Lead, CallLog, FollowUp, LeadStatusHistory, LeadConversionLog, WhatsAppLog
+
+  Admissions / students:
+    Admission, Student, FeePaymentRequest
+
+  Academic:
+    Trainer, TrainerRating, Course, CourseTrainer, Batch, StudentBatch
+
+  Attendance:
+    Attendance, TrainerAttendance, AttendanceSession, QrScan, Holiday,
+    MakeupAttendance, StaffAttendance, CompOff
+
+  Portfolio / LMS:
+    PortfolioTask, PortfolioSubmission, Portfolio, Test, TestScore, Module,
+    Topic, BatchTopicCompletion, StudentTopicCompletion, StudentLmsProgress,
+    SoftwareProgress
+
+  Placements:
+    Company, Placement, PerformanceGap
+
+  Reports / growth:
+    StudentGrowthReport, ClassAndPortfolioReport, StudentFeedback,
+    BranchReport, TrainerAward
+
+  Finance / payroll:
+    Salary, StaffTask, TaskTemplate, Penalty, TaskExtensionRequest, Incentive,
+    Expense
+
+  Marketing ops:
+    SocialMediaEngagement, EventPlan
+
+  Misc:
+    Notification, BranchTiming, SiteSetting
+
+
+  ============================================================
+  PART 6 — LEAD STATUSES
+  ============================================================
+
+  Status                       Pipeline View       Meaning
+  NEW                          Kanban              Just entered, no contact yet
+  CONTACTED                    Kanban              First call made
+  INTERESTED                   Kanban              Showed positive interest
+  QUALIFIED                    Flat list only      Verified fit (budget, intent)
+  NEGOTIATING                  Kanban              Discussing fees / batch
+  DEMO_SCHEDULED               Kanban              Offline demo booked
+  ONLINE_DEMO_SCHEDULED        Kanban              Online demo booked
+  DEMO_ATTENDED                Flat list only      Showed up to demo
+  READY_FOR_ADMISSION          Flat list only      Decided to enroll
+  CONVERTED                    Kanban              Became a student
+  CALL_BACK_LATER              Flat list only      Not ready, follow up later
+  NOT_INTERESTED               Flat list only      Declined
+  LOST                         Flat list only      No response after attempts
+
+  SEARCH: Typing in the search box auto-switches the view to a flat grid
+  showing matches across every status — so a lead in LOST or CALL_BACK_LATER
+  is still findable.
+
+
+  ============================================================
+  PART 7 — TECH STACK
+  ============================================================
+
+  BACKEND:
+  - Node.js + TypeScript + Express
+  - Prisma ORM, PostgreSQL (Supabase, transaction pooler port 6543)
+  - JWT auth, branch-scope middleware
+  - Multer + xlsx (file uploads / bulk import)
+  - bcryptjs (password hashing)
+  - Evolution API client (WhatsApp)
+
+  FRONTEND:
+  - React 18 + Vite + TypeScript
+  - Tailwind CSS + shadcn/ui (Radix primitives)
+  - React Router v6
+  - @dnd-kit (kanban drag/drop)
+  - react-day-picker (calendars)
+  - Recharts (analytics)
+  - Framer Motion (page transitions)
+
+  HOSTING:
+  - Backend: Hostinger Node.js (cPanel app manager)
+  - Frontend: Hostinger cPanel static (upload dist.zip -> extract)
+  - DB: Supabase managed PostgreSQL
+  - SSL: Cloudflare/AutoSSL force-HTTPS at domain level
+
+
+  ============================================================
+  PART 8 — QUICK ROLE x ROUTE ACCESS MATRIX
+  ============================================================
+
+  Route                                   CEO  ADMIN  CP   TRAINER  TELECALLER  STUDENT
+  /  (Dashboard)                          Yes  Yes    Yes  Yes      Yes         Yes
+  /users                                  Yes  Yes    Yes  -        -           -
+  /leads  /  /telecaller/pipeline         Yes  Yes*   Yes  -        Yes         -
+  /admissions                             Yes  -      Yes  -        Yes         -
+  /admission-requests                     -    -      -    Yes      -           -
+  /courses                                Yes  Yes    Yes  Yes      -           -
+  /trainers                               Yes  Yes    Yes  -        -           -
+  /batches                                Yes  Yes    Yes  Yes      -           -
+  /students                               Yes  Yes    Yes  Yes      -           -
+  /student-roster                         Yes  Yes    Yes  -        -           -
+  /fees                                   Yes  -      Yes  -        -           -
+  /attendance                             Yes  -      Yes  Yes      -           -
+  /portfolio                              Yes  -      Yes  Yes      -           -
+  /placements                             Yes  Yes    Yes  -        -           -
+  /incentives                             Yes  -      Yes  -        -           -
+  /growth                                 Yes  -      Yes  Yes      -           -
+  /qr-scan                                -    -      -    -        -           Yes
+  /notifications                          Yes  Yes    Yes  Yes      Yes         Yes
+  /telecaller/dashboard                   Yes  -      -    -        Yes         -
+  /telecaller/analytics                   Yes  -      -    -        Yes         -
+  /ceo-analytics                          Yes  -      -    -        -           -
+  /payroll                                Yes  Yes    Yes  Yes      -           -
+  /course-progress                        Yes  -      Yes  Yes      -           -
+  /activity-report                        Yes  Yes    Yes  Yes      -           -
+  /settings/*                             Yes  Yes    Yes  -        -           -
+  /task-templates                         Yes  Yes    Yes  -        -           -
+  /profile                                Yes  Yes    Yes  Yes      Yes         Yes
+
+  * via pipeline route only.
+
+
+  ============================================================
+  PART 9 — RECENT MAJOR FEATURE ADDITIONS
+  ============================================================
+
+  Feature                              Highlight
+  Bulk Lead Upload                     CSV / XLSX, validation, duplicate-phone
+                                      skip, silent (no WhatsApp), downloadable
+                                      template
+  Search-aware Lead View               Typing in search auto-switches kanban ->
+                                      flat view showing matches across all statuses
+  Two trainers per batch               Primary + Secondary, per-student trainer
+                                      slice, QR filtered per trainer
+  System availability                  Online students don't consume system slots;
+                                      offline do
+  Auto-batch on convert                Lead -> Student flow creates/finds matching
+                                      batch automatically
+  CP & CEO can act as trainers         Role-based, no schema change required
+  Student Roster                       Cross-course master sheet with intra-batch
+                                      trainer swap
+  Activity Report                      Derived from existing data, no new tables
+  Holidays Calendar                    Multi-day branch holidays + Saturday
+                                      auto-holiday + comp-off rule
+  Trainer Growth weighted scoring      Present=1.0, Half-day/Late=0.5 weighted
+                                      attendance
+  Notification deep-linking            Each notification routes to exact page +
+                                      tab + scroll
+  Lead activity history edit           Inline edit notes + next-due-date sync
+  Batch Time Slots settings            Configurable preset timings used across all
+                                      batch forms
+
+
+  ============================================================
+  Last updated: 2026-05-13
+  ============================================================
